@@ -1,0 +1,58 @@
+.tarjeta-contador {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 320px;
+  margin: 20px auto;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-top: 5px solid #dd0031; /* Rojo corporativo de Angular */
+}
+
+.tarjeta-contador h2 {
+  color: #333;
+  margin-bottom: 16px;
+  font-size: 1.3rem;
+}
+
+.display {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #dd0031;
+  margin: 20px 0;
+}
+
+.acciones {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  padding: 10px 22px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-sumar {
+  background-color: #dd0031;
+  color: white;
+}
+
+.btn-sumar:hover {
+  background-color: #b70028;
+}
+
+.btn-restar {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-restar:hover {
+  background-color: #565e64;
+}

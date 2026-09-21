@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparativa: Vanilla JS vs Angular</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+      padding: 30px 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      color: #1a202c;
+    }
+    header p {
+      color: #718096;
+      margin-top: 8px;
+      font-size: 1.1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border-top: 5px solid #ccc;
+    }
+    .card-vanilla {
+      border-top-color: #f7df1e; /* Color JS */
+    }
+    .card-angular {
+      border-top-color: #dd0031; /* Color Angular */
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+    .badge-vanilla {
+      background-color: #fff9db;
+      color: #926400;
+    }
+    .badge-angular {
+      background-color: #fde8eb;
+      color: #b70028;
+    }
+    .app-box {
+      background: #fafafa;
+      border: 2px dashed #e2e8f0;
+      border-radius: 8px;
+      padding: 25px;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .counter-display {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .vanilla-display {
+      color: #d4a000;
+    }
+    .angular-display {
+      color: #dd0031;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+    .btn {
+      padding: 10px 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn-vanilla {
+      background-color: #f7df1e;
+      color: #222;
+    }
+    .btn-vanilla:hover {
+      background-color: #e5cd14;
+    }
+    .btn-angular {
+      background-color: #dd0031;
+      color: #fff;
+    }
+    .btn-angular:hover {
+      background-color: #b70028;
+    }
+    .btn-secondary {
+      background-color: #6c757d;
+      color: #fff;
+    }
+    .btn-secondary:hover {
+      background-color: #565e64;
+    }
+    pre {
+      background-color: #282c34;
+      color: #abb2bf;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      margin-top: 15px;
+    }
+    .explicacion {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #4a5568;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Demostración Interactiva: Vanilla JS vs Angular</h1>
+    <p>Compara el mismo contador implementado en JavaScript puro y en Angular</p>
+  </header>
+
+  <div class="grid">
+    <!-- COLUMNA 1: VANILLA JAVASCRIPT -->
+    <div class="card card-vanilla">
+      <span class="badge badge-vanilla">Vanilla JS (Imperativo)</span>
+      <h2>1. JavaScript Puro</h2>
+      <p class="explicacion">
+        En Vanilla JS tú tienes que buscar el elemento manualmente en el DOM con <code>getElementById</code> y actualizar su <code>textContent</code> cada vez que la variable cambia.
+      </p>
+
+      <div class="app-box">
+        <h1 id="contador" class="counter-display vanilla-display">0</h1>
+        <div class="btn-group">
+          <button id="restar" class="btn btn-secondary">-1</button>
+          <button id="sumar" class="btn btn-vanilla">+1</button>
+        </div>
+      </div>
+
+      <h3>Código usado (vanilla.js):</h3>
+      <pre><code>let contador = 0;
+const valor = document.getElementById('contador');
+const btnSumar = document.getElementById('sumar');
+const btnRestar = document.getElementById('restar');
+
+btnSumar.addEventListener('click', () => {
+    contador++;
+    valor.textContent = contador;
+});
+
+btnRestar.addEventListener('click', () => {
+    contador--;
+    valor.textContent = contador;
+});</code></pre>
+    </div>
+
+    <!-- COLUMNA 2: ANGULAR -->
+    <div class="card card-angular">
+      <span class="badge badge-angular">Angular (Declarativo y Reactivo)</span>
+      <h2>2. Componente Angular</h2>
+      <p class="explicacion">
+        En Angular tú no tocas el DOM. Enlazas la variable con <code>{{ contador }}</code> y el evento con <code>(click)="sumar()"</code>. ¡Angular actualiza la pantalla automáticamente!
+      </p>
+
+      <div class="app-box">
+        <!-- Simulación visual del componente Angular -->
+        <h1 id="angular-contador" class="counter-display angular-display">0</h1>
+        <div class="btn-group">
+          <button id="angular-restar" class="btn btn-secondary">-1</button>
+          <button id="angular-sumar" class="btn btn-angular">+1</button>
+        </div>
+      </div>
+
+      <h3>Código Angular (TypeScript + HTML):</h3>
+      <pre><code>// contador.component.ts
+export class ContadorComponent {
+  contador: number = 0;
+
+  sumar() { this.contador++; }
+  restar() { this.contador--; }
+}
+
+&lt;!-- contador.component.html --&gt;
+&lt;h1&gt;{{ contador }}&lt;/h1&gt;
+&lt;button (click)="restar()"&gt;-1&lt;/button&gt;
+&lt;button (click)="sumar()"&gt;+1&lt;/button&gt;</code></pre>
+    </div>
+  </div>
+
+  <!-- Cargamos el script vanilla.js real creado antes -->
+  <script src="vanilla.js"></script>
+
+  <!-- Script que simula la reactividad del componente Angular -->
+  <script>
+    // Simulación del comportamiento del componente Angular:
+    const angularComponent = {
+      contador: 0,
+      sumar() {
+        this.contador++;
+        this.render();
+      },
+      restar() {
+        this.contador--;
+        this.render();
+      },
+      render() {
+        document.getElementById('angular-contador').textContent = this.contador;
+      }
+    };
+
+    document.getElementById('angular-sumar').addEventListener('click', () => angularComponent.sumar());
+    document.getElementById('angular-restar').addEventListener('click', () => angularComponent.restar());
+  </script>
+
+</body>
+</html>

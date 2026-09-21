@@ -1,0 +1,12 @@
+<div class="tarjeta-contador">
+  <h2>Contador en Angular</h2>
+  
+  <!-- Interpolación: Angular pinta automáticamente el valor de la variable -->
+  <div class="display">{{ contador }}</div>
+
+  <div class="acciones">
+    <!-- Event Binding: (click) llama a los métodos de la clase TypeScript -->
+    <button class="btn btn-restar" (click)="restar()">-1</button>
+    <button class="btn btn-sumar" (click)="sumar()">+1</button>
+  </div>
+</div>
