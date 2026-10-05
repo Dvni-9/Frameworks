@@ -1,0 +1,62 @@
+.contenedor {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+h1 {
+  margin-bottom: 8px;
+  color: #c62828;
+}
+
+.contador {
+  margin-bottom: 20px;
+}
+
+.formulario {
+  padding: 15px;
+  margin-bottom: 20px;
+  background: white;
+  border: 1px solid #ccc;
+}
+
+.formulario h2 {
+  margin-top: 0;
+}
+
+.grupo {
+  margin-bottom: 10px;
+}
+
+.grupo label {
+  display: block;
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+
+.grupo input,
+.grupo select {
+  width: 100%;
+  max-width: 420px;
+  padding: 7px;
+  border: 1px solid #aaa;
+}
+
+.btn-anadir {
+  padding: 8px 14px;
+  color: white;
+  background: #c62828;
+  border: 0;
+  cursor: pointer;
+}
+
+hr {
+  margin: 20px 0;
+}
+
+.lista {
+  margin-top: 10px;
+}
+
+.vacio {
+  color: #777;
+}

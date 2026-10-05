@@ -1,3 +1,73 @@
-<div class="container">
-  <h1>{{ titulo }}</h1>
+<div class="contenedor">
+  <h1>Universo Super Mario</h1>
+
+  <p class="contador">
+    Total catálogo: <strong>{{ totalJuegos() }}</strong> |
+    Saga principal: <strong>{{ totalPrincipales() }}</strong> |
+    Spin-offs: <strong>{{ totalSpinOffs() }}</strong>
+  </p>
+
+  <div class="formulario">
+    <h2>Añadir nuevo videojuego</h2>
+
+    <div class="grupo">
+      <label for="titulo">Título:</label>
+      <input
+        id="titulo"
+        type="text"
+        #titulo
+        [value]="tituloInput()"
+        (input)="actualizarTitulo(titulo.value)"
+        placeholder="Ej: Mario Wonder"
+      />
+    </div>
+
+    <div class="grupo">
+      <label for="plataforma">Plataforma:</label>
+      <input
+        id="plataforma"
+        type="text"
+        #plataforma
+        [value]="plataformaInput()"
+        (input)="actualizarPlataforma(plataforma.value)"
+        placeholder="Ej: Nintendo Switch"
+      />
+    </div>
+
+    <div class="grupo">
+      <label for="tipo">Tipo:</label>
+      <select id="tipo" #tipo [value]="tipoInput()" (change)="actualizarTipo(tipo.value)">
+        <option value="Plataformas">Plataformas</option>
+        <option value="Kart">Kart</option>
+        <option value="RPG">RPG</option>
+        <option value="Deportes">Deportes</option>
+        <option value="Party">Party</option>
+      </select>
+    </div>
+
+    <div class="grupo">
+      <label for="categoria">Categoría:</label>
+      <select id="categoria" #categoria (change)="actualizarEsPrincipal(categoria.value)">
+        <option value="true">Saga Principal</option>
+        <option value="false">Spin-off</option>
+      </select>
+    </div>
+
+    <button type="button" class="btn-anadir" (click)="agregarJuego()">Añadir juego</button>
+  </div>
+
+  <hr />
+
+  <h2>Catálogo</h2>
+
+  <div class="lista">
+    @for (juego of juegos(); track juego.id) {
+      <app-juego-item
+        [juego]="juego"
+        (onEliminar)="borrarJuego($event)"
+      />
+    } @empty {
+      <p class="vacio">No hay juegos registrados.</p>
+    }
+  </div>
 </div>
