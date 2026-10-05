@@ -3,6 +3,7 @@ import { Component, input, output } from '@angular/core';
 @Component({
   selector: 'app-tarea-item',
   standalone: true,
+  imports: [],
   template: `
     <div class="tarjeta-tarea">
       <span class="texto-tarea">{{ tarea() }}</span>
@@ -21,10 +22,12 @@ import { Component, input, output } from '@angular/core';
       align-items: center;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
+
     .texto-tarea {
       color: #1e293b;
       font-size: 1rem;
     }
+
     .btn-borrar {
       background-color: #ef4444;
       color: white;
@@ -33,6 +36,11 @@ import { Component, input, output } from '@angular/core';
       border-radius: 6px;
       cursor: pointer;
       font-weight: 500;
+      transition: background-color 0.2s;
+    }
+
+    .btn-borrar:hover {
+      background-color: #dc2626;
     }
   `]
 })
