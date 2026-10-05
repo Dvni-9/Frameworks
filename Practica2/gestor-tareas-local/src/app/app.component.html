@@ -1,0 +1,58 @@
+<main class="container">
+  <h1>Gestor de Tareas DAW</h1>
+  <p class="subtitulo">Arquitectura Modular con Signals e Inyección de Dependencias</p>
+
+  <!-- Formulario de alta -->
+  <div class="formulario">
+    <input 
+      type="text" 
+      [value]="nuevaTareaInput()" 
+      (input)="actualizarTexto($event)" 
+      (keydown.enter)="agregar()"
+      placeholder="Escribe una nueva tarea..."
+    />
+    <button (click)="agregar()">Añadir Tarea</button>
+  </div>
+
+  <!-- Filtros -->
+  <div class="filtros">
+    <button 
+      [class.activo]="filtro() === 'todas'" 
+      (click)="cambiarFiltro('todas')">
+      Todas ({{ total() }})
+    </button>
+    <button 
+      [class.activo]="filtro() === 'pendientes'" 
+      (click)="cambiarFiltro('pendientes')">
+      Pendientes ({{ pendientes() }})
+    </button>
+    <button 
+      [class.activo]="filtro() === 'completadas'" 
+      (click)="cambiarFiltro('completadas')">
+      Completadas ({{ completadas() }})
+    </button>
+  </div>
+
+  <!-- Listado de tareas usando el componente hijo -->
+  <div class="lista">
+    @for (item of tareasFiltradas(); track item.id) {
+      <app-tarea-item 
+        [tarea]="item" 
+        (onEliminar)="borrar($event)" 
+        (onAlternar)="alternar($event)"
+      />
+    } @empty {
+      <p class="vacio">No hay tareas para mostrar.</p>
+    }
+  </div>
+
+  <!-- Resumen al pie -->
+  <div class="pie">
+    <span>Quedan {{ pendientes() }} tareas por hacer</span>
+    @if (completadas() > 0) {
+      <button class="btn-limpiar" (click)="limpiarCompletadas()">
+        Borrar completadas
+      </button>
+    }
+  </div>
+</main>
