@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "gestor-tareas-local": {
+    "universo-mario": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -84,10 +84,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "gestor-tareas-local:build:production"
+              "buildTarget": "universo-mario:build:production"
             },
             "development": {
-              "buildTarget": "gestor-tareas-local:build:development"
+              "buildTarget": "universo-mario:build:development"
             }
           },
           "defaultConfiguration": "development"
